@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="InputView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTN-vx-R4d">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbC-18-Ajr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.91364532710000002" green="0.91377681489999996" blue="0.91361659770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="cXL-aR-lnE"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fa9-MA-oxL">
+                                <rect key="frame" x="8" y="1" width="42.5" height="42.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fa9-MA-oxL" secondAttribute="height" multiplier="1:1" id="XlM-nn-ohO"/>
+                                </constraints>
+                                <state key="normal" image="表情"/>
+                                <connections>
+                                    <action selector="biaoqingAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="s7Y-bI-xxt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wwd-Cu-tMr">
+                                <rect key="frame" x="58.5" y="0.0" width="43.5" height="43.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wwd-Cu-tMr" secondAttribute="height" multiplier="1:1" id="OlU-iJ-O2U"/>
+                                </constraints>
+                                <state key="normal" image="相册"/>
+                                <connections>
+                                    <action selector="xiangceAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8yU-bS-yye"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9b-az-gRi">
+                                <rect key="frame" x="110" y="0.0" width="43.5" height="43.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="m9b-az-gRi" secondAttribute="height" multiplier="1:1" id="cb9-GU-gzs"/>
+                                </constraints>
+                                <state key="normal" image="相机"/>
+                                <connections>
+                                    <action selector="paizhaoAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jmC-m5-NTd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yoX-nr-idl">
+                                <rect key="frame" x="161.5" y="1" width="42.5" height="42.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yoX-nr-idl" secondAttribute="height" multiplier="1:1" id="9CA-fT-VrZ"/>
+                                </constraints>
+                                <state key="normal" image="更多板块"/>
+                                <connections>
+                                    <action selector="bankuaiAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iS3-30-9ir"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LjM-AC-LBV">
+                                <rect key="frame" x="269.5" y="1" width="42.5" height="42.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LjM-AC-LBV" secondAttribute="height" multiplier="1:1" id="gWd-qV-P72"/>
+                                </constraints>
+                                <state key="normal" image="键盘"/>
+                                <connections>
+                                    <action selector="jianpanAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TqK-bb-VDW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="m9b-az-gRi" secondAttribute="bottom" id="12E-XI-aVR"/>
+                            <constraint firstItem="wbC-18-Ajr" firstAttribute="leading" secondItem="cTN-vx-R4d" secondAttribute="leading" id="D9k-Q0-Ryc"/>
+                            <constraint firstItem="fa9-MA-oxL" firstAttribute="leading" secondItem="cTN-vx-R4d" secondAttribute="leading" constant="8" id="Fmi-cK-jHf"/>
+                            <constraint firstItem="wwd-Cu-tMr" firstAttribute="top" secondItem="cTN-vx-R4d" secondAttribute="top" id="Ixx-po-JTn"/>
+                            <constraint firstAttribute="trailing" secondItem="LjM-AC-LBV" secondAttribute="trailing" constant="8" id="JmB-3v-OUq"/>
+                            <constraint firstItem="wbC-18-Ajr" firstAttribute="top" secondItem="cTN-vx-R4d" secondAttribute="top" id="Nbu-JA-yqZ"/>
+                            <constraint firstAttribute="bottom" secondItem="yoX-nr-idl" secondAttribute="bottom" id="YdT-Ys-i1E"/>
+                            <constraint firstAttribute="bottom" secondItem="wwd-Cu-tMr" secondAttribute="bottom" id="Z4y-13-auV"/>
+                            <constraint firstItem="m9b-az-gRi" firstAttribute="leading" secondItem="wwd-Cu-tMr" secondAttribute="trailing" constant="8" id="ZeL-UQ-l2a"/>
+                            <constraint firstItem="fa9-MA-oxL" firstAttribute="top" secondItem="wbC-18-Ajr" secondAttribute="bottom" id="bmz-0Q-fxi"/>
+                            <constraint firstItem="yoX-nr-idl" firstAttribute="leading" secondItem="m9b-az-gRi" secondAttribute="trailing" constant="8" id="gYZ-3Z-sZB"/>
+                            <constraint firstItem="LjM-AC-LBV" firstAttribute="top" secondItem="wbC-18-Ajr" secondAttribute="bottom" id="h4C-4z-d45"/>
+                            <constraint firstAttribute="bottom" secondItem="LjM-AC-LBV" secondAttribute="bottom" id="sTB-5a-sTM"/>
+                            <constraint firstItem="yoX-nr-idl" firstAttribute="top" secondItem="wbC-18-Ajr" secondAttribute="bottom" id="tbG-bx-zPY"/>
+                            <constraint firstItem="wwd-Cu-tMr" firstAttribute="leading" secondItem="fa9-MA-oxL" secondAttribute="trailing" constant="8" id="td8-rC-tHD"/>
+                            <constraint firstAttribute="bottom" secondItem="fa9-MA-oxL" secondAttribute="bottom" id="v84-Xc-LrL"/>
+                            <constraint firstItem="m9b-az-gRi" firstAttribute="top" secondItem="cTN-vx-R4d" secondAttribute="top" id="wbZ-fX-5BS"/>
+                            <constraint firstAttribute="trailing" secondItem="wbC-18-Ajr" secondAttribute="trailing" id="xCf-lO-jS1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="cTN-vx-R4d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="C2z-Fa-IwV"/>
+                    <constraint firstAttribute="trailing" secondItem="cTN-vx-R4d" secondAttribute="trailing" id="H4L-8f-DyY"/>
+                    <constraint firstItem="cTN-vx-R4d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="VZw-ZE-rV4"/>
+                    <constraint firstAttribute="bottom" secondItem="cTN-vx-R4d" secondAttribute="bottom" id="r0c-In-1yD"/>
+                </constraints>
+            </tableViewCellContentView>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="更多板块" width="16" height="16"/>
+        <image name="相册" width="16" height="16"/>
+        <image name="相机" width="16" height="16"/>
+        <image name="表情" width="16" height="16"/>
+        <image name="键盘" width="16" height="16"/>
+    </resources>
+</document>

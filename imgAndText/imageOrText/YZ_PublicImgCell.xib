@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="YZ_PublicImgCell" rowHeight="101" id="KGk-i7-Jjw" customClass="YZ_PublicImgCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q7H-7o-686">
+                        <rect key="frame" x="20" y="4" width="280" height="92.5"/>
+                    </imageView>
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mSx-X7-Yu0">
+                        <rect key="frame" x="20" y="2" width="280" height="2"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="sUb-3Z-hD5"/>
+                        </constraints>
+                    </progressView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMm-MX-kY6">
+                        <rect key="frame" x="269" y="8" width="31" height="30"/>
+                        <state key="normal" title="删除"/>
+                        <connections>
+                            <action selector="delegateAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aQL-He-pDy"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="oMm-MX-kY6" firstAttribute="top" secondItem="mSx-X7-Yu0" secondAttribute="bottom" constant="4" id="CLl-hF-Gsr"/>
+                    <constraint firstAttribute="trailing" secondItem="mSx-X7-Yu0" secondAttribute="trailing" constant="20" id="EsF-c1-geZ"/>
+                    <constraint firstAttribute="trailing" secondItem="oMm-MX-kY6" secondAttribute="trailing" constant="20" id="NtR-Oc-eZ8"/>
+                    <constraint firstItem="mSx-X7-Yu0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ZLb-Z4-Y9c"/>
+                    <constraint firstAttribute="trailing" secondItem="Q7H-7o-686" secondAttribute="trailing" constant="20" id="bjx-ph-whi"/>
+                    <constraint firstAttribute="bottom" secondItem="Q7H-7o-686" secondAttribute="bottom" constant="4" id="cHK-1e-pca"/>
+                    <constraint firstItem="Q7H-7o-686" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="dsA-P1-Byo"/>
+                    <constraint firstItem="Q7H-7o-686" firstAttribute="top" secondItem="mSx-X7-Yu0" secondAttribute="bottom" id="hUg-aG-ok0"/>
+                    <constraint firstItem="Q7H-7o-686" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="knf-rz-Nzt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="img" destination="Q7H-7o-686" id="h6w-uF-blI"/>
+                <outlet property="progressV" destination="mSx-X7-Yu0" id="ZVj-Nv-aZH"/>
+            </connections>
+            <point key="canvasLocation" x="-309" y="-35"/>
+        </tableViewCell>
+    </objects>
+</document>
