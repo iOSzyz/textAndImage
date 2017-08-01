@@ -8,7 +8,31 @@
 
 #import "ZYZ_Node.h"
 
+@interface ZYZ_Node ()
+
+@property(nonatomic,strong)UITextView *heightTextView;
+
+@end
+
 @implementation ZYZ_Node
+
+-(UITextView *)heightTextView{
+    if (!_heightTextView) {
+        _heightTextView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 32, 10)];
+        _heightTextView.bounces = NO;
+        _heightTextView.font = [UIFont systemFontOfSize:14];
+        _heightTextView.scrollEnabled = NO;
+    }
+    return _heightTextView;
+}
+
+-(void)setContent:(NSString *)content{
+    _content = content;
+    self.heightTextView.text = content;
+    CGSize size = [self.heightTextView sizeThatFits:CGSizeMake([UIScreen mainScreen].bounds.size.width - 32 - 16, CGFLOAT_MAX)];
+    CGFloat height = size.height;
+    _cellHeight = height + 20;
+}
 
 -(NSDictionary *)toDict{
     return @{};

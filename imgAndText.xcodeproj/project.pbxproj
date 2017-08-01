@@ -19,6 +19,7 @@
 		605849471F233CB600B8192F /* 相机@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605849451F233CB600B8192F /* 相机@2x.png */; };
 		6058494B1F2340BB00B8192F /* InputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 605849491F2340BB00B8192F /* InputView.m */; };
 		6058494C1F2340BB00B8192F /* InputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6058494A1F2340BB00B8192F /* InputView.xib */; };
+		6058494F1F244BA000B8192F /* UIView+a.m in Sources */ = {isa = PBXBuildFile; fileRef = 6058494E1F244BA000B8192F /* UIView+a.m */; };
 		60BCA7CD1F22E27F00563396 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BCA7CC1F22E27F00563396 /* main.m */; };
 		60BCA7D01F22E27F00563396 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BCA7CF1F22E27F00563396 /* AppDelegate.m */; };
 		60BCA7D31F22E27F00563396 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BCA7D21F22E27F00563396 /* ViewController.m */; };
@@ -44,6 +45,8 @@
 		605849481F2340BB00B8192F /* InputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputView.h; sourceTree = "<group>"; };
 		605849491F2340BB00B8192F /* InputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputView.m; sourceTree = "<group>"; };
 		6058494A1F2340BB00B8192F /* InputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputView.xib; sourceTree = "<group>"; };
+		6058494D1F244BA000B8192F /* UIView+a.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+a.h"; sourceTree = "<group>"; };
+		6058494E1F244BA000B8192F /* UIView+a.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+a.m"; sourceTree = "<group>"; };
 		60BCA7C81F22E27F00563396 /* imgAndText.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imgAndText.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60BCA7CC1F22E27F00563396 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		60BCA7CE1F22E27F00563396 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 				60BCA7D91F22E27F00563396 /* LaunchScreen.storyboard */,
 				60BCA7DC1F22E27F00563396 /* Info.plist */,
 				60BCA7CB1F22E27F00563396 /* Supporting Files */,
+				6058494D1F244BA000B8192F /* UIView+a.h */,
+				6058494E1F244BA000B8192F /* UIView+a.m */,
 			);
 			path = imgAndText;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				TargetAttributes = {
 					60BCA7C71F22E27F00563396 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = F5L4K9TS2N;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -221,6 +227,7 @@
 			files = (
 				60BCA7D31F22E27F00563396 /* ViewController.m in Sources */,
 				60BCA7D01F22E27F00563396 /* AppDelegate.m in Sources */,
+				6058494F1F244BA000B8192F /* UIView+a.m in Sources */,
 				6058494B1F2340BB00B8192F /* InputView.m in Sources */,
 				60562EB61F2323C4006FD9AB /* YZ_PublicTextCell.m in Sources */,
 				60BCA7CD1F22E27F00563396 /* main.m in Sources */,
@@ -347,6 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = F5L4K9TS2N;
 				INFOPLIST_FILE = imgAndText/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GWM.imgAndText;
@@ -358,6 +366,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = F5L4K9TS2N;
 				INFOPLIST_FILE = imgAndText/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GWM.imgAndText;

@@ -47,7 +47,7 @@
 }
 -(void)textViewDidChange:(UITextView *)textView{
     [self.tableView beginUpdates];
-    CGSize size = [textView sizeThatFits:CGSizeMake([UIScreen mainScreen].bounds.size.width - 32, CGFLOAT_MAX)];
+    CGSize size = [textView sizeThatFits:CGSizeMake([UIScreen mainScreen].bounds.size.width - 32 - 16, CGFLOAT_MAX)];
     CGFloat height = size.height;
     NSLog(@"%.2f",height);
     if (height < 50) {

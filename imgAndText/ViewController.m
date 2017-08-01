@@ -22,6 +22,11 @@
  */
 @property(nonatomic,assign)NSInteger selectIndex;
 
+/**
+ 选中图片
+ */
+@property(nonatomic,copy)void(^selImageComplete)(UIImage *iamge);
+
 @end
 
 @implementation ViewController
@@ -68,8 +73,9 @@
             cell = [[NSBundle mainBundle] loadNibNamed:@"YZ_PublicImgCell" owner:nil options:nil][0];
         }
         cell.img.image = node.selectImage;
+        __weak typeof(self) weakSelf = self;
         cell.deleteImage = ^{
-            
+            [weakSelf deleteNode:node];
         };
         return cell;
     }else{
@@ -84,7 +90,6 @@
         __weak typeof(self) weakSelf = self;
         cell.didChangeHeight = ^(CGFloat height, NSString *content) {
             weakNode.content = content;
-            weakNode.cellHeight = height + 16;
         };
         cell.tableView = _table;
         cell.inputViewAction = ^(NSInteger action, NSInteger location) {
@@ -95,7 +100,8 @@
                     
                 }break;
                 case 1:{
-                    
+//                    相册
+                    [weakSelf insertImageWithSelectIndex:indexPath.row location:location node:node];
                 }break;
                 case 2:{
                     
@@ -125,54 +131,88 @@
         //在末尾插入
         ZYZ_Node *node = self.dataArr.lastObject;
         if (node.content.length == 0) {
-            ZYZ_Node *ImageNode = [[ZYZ_Node alloc]init];
-            ImageNode.cellHeight = 0;
-//            ImageNode.selectImage = image;
-            ImageNode.content = @"";
-            ImageNode.type = CONTENT_IMG;
-            [self.dataArr insertObject:ImageNode atIndex:self.dataArr.count - 1];
-            _selectIndex = self.dataArr.count - 2;
+            [self showImageVCWithComplete:^(UIImage *image) {
+                ZYZ_Node *ImageNode = [[ZYZ_Node alloc]init];
+                ImageNode.cellHeight = 0;
+                ImageNode.selectImage = image;
+//                ImageNode.content = @"";
+                ImageNode.type = CONTENT_IMG;
+                [self.dataArr insertObject:ImageNode atIndex:self.dataArr.count - 1];
+                _selectIndex = self.dataArr.count - 2;
+                [self.table reloadData];
+            }];
         }else{
-            ZYZ_Node *ImageNode = [[ZYZ_Node alloc]init];
-            ImageNode.cellHeight = 0;
-            
-            ImageNode.content = @"";
-            ImageNode.type = CONTENT_IMG;
-            [self.dataArr addObject:ImageNode];
-            _selectIndex = self.dataArr.count - 1;
-            
-            ZYZ_Node *node = [[ZYZ_Node alloc]init];
-            node.cellHeight = 66;
-            node.content = @"";
-            node.type = CONTENT_TEXT;
-            [self.dataArr addObject:node];
+            [self showImageVCWithComplete:^(UIImage *image) {
+                ZYZ_Node *ImageNode = [[ZYZ_Node alloc]init];
+                ImageNode.cellHeight = 0;
+                ImageNode.selectImage = image;
+//                ImageNode.content = @"";
+                ImageNode.type = CONTENT_IMG;
+                [self.dataArr addObject:ImageNode];
+                _selectIndex = self.dataArr.count - 1;
+                
+                ZYZ_Node *node = [[ZYZ_Node alloc]init];
+                node.cellHeight = 66;
+                node.content = @"";
+                node.type = CONTENT_TEXT;
+                [self.dataArr addObject:node];
+                [self.table reloadData];
+            }];
         }
     }else{
         //在中间位置插入
         if (node.content.length == location) {
-            //在文字末尾插入
-            ZYZ_Node *ImageNode = [[ZYZ_Node alloc]init];
-            ImageNode.cellHeight = 0;
-            
-            ImageNode.content = @"";
-            ImageNode.type = CONTENT_IMG;
-            [self.dataArr addObject:ImageNode];
-            _selectIndex = self.dataArr.count - 1;
-            
-            ZYZ_Node *node = [[ZYZ_Node alloc]init];
-            node.cellHeight = 66;
-            node.content = @"";
-            node.type = CONTENT_TEXT;
-            [self.dataArr addObject:node];
+            [self showImageVCWithComplete:^(UIImage *image) {
+                if (node.content.length == 0) {
+                    [self.dataArr removeObject:node];
+                }
+                //在文字末尾插入
+                ZYZ_Node *ImageNode = [[ZYZ_Node alloc]init];
+                ImageNode.cellHeight = 0;
+                ImageNode.selectImage = image;
+//                ImageNode.content = @"";
+                ImageNode.type = CONTENT_IMG;
+                [self.dataArr addObject:ImageNode];
+                _selectIndex = self.dataArr.count - 1;
+                
+                ZYZ_Node *node = [[ZYZ_Node alloc]init];
+                node.cellHeight = 66;
+                node.content = @"";
+                node.type = CONTENT_TEXT;
+                [self.dataArr addObject:node];
+                [self.table reloadData];
+            }];
         }else{
             //在文字中间插入
-            
+            [self showImageVCWithComplete:^(UIImage *image) {
+                NSString *firstStr = [node.content substringToIndex:location];
+                NSString *secondStr = [node.content substringFromIndex:location];
+                ZYZ_Node *secondNode = [[ZYZ_Node alloc]init];
+                secondNode.content = secondStr;
+                secondNode.type = CONTENT_TEXT;
+                [self.dataArr insertObject:secondNode atIndex:idx];
+                
+                ZYZ_Node *ImageNode = [[ZYZ_Node alloc]init];
+                ImageNode.cellHeight = 0;
+                ImageNode.selectImage = image;
+                //                ImageNode.content = @"";
+                ImageNode.type = CONTENT_IMG;
+                [self.dataArr insertObject:ImageNode atIndex:idx];
+                
+                ZYZ_Node *firstNode = [[ZYZ_Node alloc]init];
+                firstNode.content = firstStr;
+                firstNode.type = CONTENT_TEXT;
+                [self.dataArr insertObject:firstNode atIndex:idx];
+                [self.dataArr removeObjectAtIndex:idx + 3];
+                [self.table reloadData];
+            }];
         }
     }
 }
 
-- (IBAction)insertImage:(id)sender {
-    [self.view endEditing:YES];
+- (void)showImageVCWithComplete:(void(^)(UIImage *image))complete{
+//    [self.view endEditing:YES];
+    _selImageComplete = complete;
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     imagePicker.delegate = self;
     imagePicker.allowsEditing = NO;
@@ -185,25 +225,14 @@
         NSURL *assetURL = info[UIImagePickerControllerReferenceURL];
         UIImage* image = [info objectForKey:UIImagePickerControllerOriginalImage];
         if (image) {
-            ZYZ_Node *ImageNode = [[ZYZ_Node alloc]init];
-            //ImageNode.cellHeight = 66;
-            ImageNode.selectImage = image;
-            ImageNode.content = @"";
-            ImageNode.type = CONTENT_IMG;
-            [weakSelf.dataArr addObject:ImageNode];
-            
-            ZYZ_Node *node = [[ZYZ_Node alloc]init];
-            node.cellHeight = 66;
-            node.content = @"";
-            node.type = CONTENT_TEXT;
-            [weakSelf.dataArr addObject:node];
-            [weakSelf.table reloadData];
+            _selImageComplete(image);
         }
     }];
 }
 
 -(void)deleteNode:(ZYZ_Node *)node{
-    
+    [self.dataArr removeObject:node];
+    [self.table reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
